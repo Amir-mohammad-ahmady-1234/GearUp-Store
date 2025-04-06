@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header className="bg-gray-800 text-white p-4">
@@ -5,9 +7,15 @@ const Header = () => {
         <h1 className="text-2xl font-bold">StoreName</h1>
         <div className="flex items-center space-x-4">
           {/* دکمه ورود */}
-          <button className="bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-700 transition">Login</button>
+          <Link to="login">
+            <button className="bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-700 transition">
+              Login
+            </button>
+          </Link>
           {/* دکمه سبد خرید */}
-          <button className="bg-green-500 px-4 py-2 rounded-md hover:bg-green-700 transition">My Basket</button>
+          <button className="bg-green-500 px-4 py-2 rounded-md hover:bg-green-700 transition">
+            My Basket
+          </button>
         </div>
       </div>
 
