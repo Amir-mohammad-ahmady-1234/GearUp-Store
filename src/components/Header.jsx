@@ -2,37 +2,64 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="bg-gray-800 text-white p-4">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">StoreName</h1>
-        <div className="flex items-center space-x-4">
-          {/* دکمه ورود */}
+    <header className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
+      <div className="container mx-auto flex justify-between items-center">
+        {/* لوگو */}
+        <div className="flex items-center space-x-3">
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            className="w-10 h-10 rounded-full"
+          />
+          <h1 className="text-3xl font-bold tracking-wide">StoreName</h1>
+        </div>
+
+        {/* منوی ناوبری */}
+        <nav className="hidden md:flex space-x-8">
+          <a
+            href="/"
+            className="text-lg hover:text-gray-200 transition duration-300"
+          >
+            Home
+          </a>
+          <a
+            href="/shop"
+            className="text-lg hover:text-gray-200 transition duration-300"
+          >
+            Shop
+          </a>
+          <a
+            href="/about"
+            className="text-lg hover:text-gray-200 transition duration-300"
+          >
+            About
+          </a>
+          <a
+            href="/contact"
+            className="text-lg hover:text-gray-200 transition duration-300"
+          >
+            Contact
+          </a>
+        </nav>
+
+        {/* دکمه‌ها (Login و Cart) */}
+        <div className="flex items-center space-x-6">
           <Link to="login">
-            <button className="bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-700 transition">
+            <button className="bg-white text-blue-600 py-2 px-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
               Login
             </button>
           </Link>
-          {/* دکمه سبد خرید */}
-          <button className="bg-green-500 px-4 py-2 rounded-md hover:bg-green-700 transition">
+          <button className="bg-yellow-400 text-white py-2 px-4 rounded-lg font-semibold hover:bg-yellow-500 transition duration-300">
             My Basket
           </button>
         </div>
-      </div>
 
-      {/* فیلد جستجو */}
-      <div className="mt-4 flex justify-center">
-        <form className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search for products..."
-              className="w-full p-3 pl-10 pr-4 rounded-lg bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-              <i className="fas fa-search"></i>
-            </span>
-          </div>
-        </form>
+        {/* منوی موبایل (Hamburger) */}
+        <div className="md:hidden flex items-center space-x-4">
+          <button className="text-2xl focus:outline-none hover:text-gray-200">
+            <i className="fas fa-bars"></i>
+          </button>
+        </div>
       </div>
     </header>
   );
