@@ -1,7 +1,28 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
 const LoginPage = () => {
+  const [userEmail, setUserEmail] = useState("mohammad@gmail.com");
+  const [userPassword, setUserPassword] = useState("12345678");
+  const navigate = useNavigate();
+
+  const { isAuthenticated, email, password, err, dispatch } = useAuth();
+
   function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
+    dispatch({
+      type: "auth/chackedInfo",
+      payload: { email: userEmail, password: userPassword },
+    });
   }
+
+  useEffect(
+    function () {
+      if (isAuthenticated) navigate("/");
+    },
+    [isAuthenticated]
+  );
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -26,6 +47,8 @@ const LoginPage = () => {
               id="email"
               placeholder="Enter your email"
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
             />
           </div>
 
@@ -42,6 +65,8 @@ const LoginPage = () => {
               id="password"
               placeholder="Enter your password"
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={userPassword}
+              onChange={(e) => setUserPassword(e.target.value)}
             />
           </div>
 
