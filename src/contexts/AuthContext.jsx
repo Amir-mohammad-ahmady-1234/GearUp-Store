@@ -29,7 +29,7 @@ function reducer(state, action) {
       } else {
         return {
           ...state,
-          err: "you don't have an account, please created an account by click on SingIn",
+          err: "there is no user with this information in userList.",
         };
       }
     default:
