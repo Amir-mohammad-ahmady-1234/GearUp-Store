@@ -25,6 +25,7 @@ function reducer(state, action) {
           isAuthenticated: true,
           email: action.payload.email,
           password: action.payload.password,
+          err: null
         };
       } else {
         return {
