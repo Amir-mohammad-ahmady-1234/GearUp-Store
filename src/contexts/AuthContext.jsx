@@ -32,6 +32,8 @@ function reducer(state, action) {
           err: "there is no user with this information in userList.",
         };
       }
+    case "auth/logout":
+      return initialState;
     default:
       return state;
   }

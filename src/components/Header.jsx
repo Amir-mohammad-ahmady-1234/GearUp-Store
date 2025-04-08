@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ClockIcon } from "@heroicons/react/24/outline";
+import { useAuth } from "../contexts/AuthContext";
 
 const Header = () => {
+  const { isAuthenticated, dispatch } = useAuth();
+
+  function handleLogout() {
+    if (isAuthenticated) dispatch({ type: "auth/logout" });
+  }
+
   return (
     <header className="bg-gray-800 text-white p-4">
       <div className="flex justify-between items-center">
@@ -11,11 +18,16 @@ const Header = () => {
         </h1>
         <div className="flex items-center space-x-4">
           {/* دکمه ورود */}
+
           <Link to="login">
-            <button className="bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-700 transition">
-              Login
+            <button
+              onClick={handleLogout}
+              className="bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-700 transition"
+            >
+              {isAuthenticated ? "Logout" : "Login"}
             </button>
           </Link>
+
           {/* دکمه سبد خرید */}
           <button className="bg-green-500 px-4 py-2 rounded-md hover:bg-green-700 transition">
             My Basket
