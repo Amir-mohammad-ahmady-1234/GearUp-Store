@@ -5,7 +5,7 @@ const Filters = () => {
   const [priceRange, setPriceRange] = useState("1500");
 
   return (
-    <div className="bg-gray-100 p-4 rounded-md">
+    <div className="bg-gray-100 p-4 rounded-md lg:sticky lg:top-[120px] lg:left-0">
       <h2 className="text-xl font-semibold mb-4">Filters</h2>
       <div className="space-y-4">
         <div>

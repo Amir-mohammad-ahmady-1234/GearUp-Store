@@ -13,7 +13,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-gray-800 text-white p-4">
+    <header className="sticky top-0 bg-gray-800 text-white p-4">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold flex items-center">
           <ClockIcon className="h-9 w-9 text-gray-700 mr-2" />
@@ -39,7 +39,7 @@ const Header = () => {
       </div>
 
       {/* فیلد جستجو */}
-      <div className="mt-4 flex justify-center items-top">
+      <div className="mt-4 flex justify-center items-top md:mt-[-30px]">
         <form className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4">
           <div className="relative">
             <input
