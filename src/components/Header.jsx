@@ -1,8 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "../contexts/AuthContext";
+import { useState } from "react";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const { isAuthenticated, dispatch } = useAuth();
 
   function handleLogout() {
@@ -14,7 +17,7 @@ const Header = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold flex items-center">
           <ClockIcon className="h-9 w-9 text-gray-700 mr-2" />
-          <span className="text-gray-700">WatchStore</span>
+          <span className="text-gray-700">GearUp Store</span>
         </h1>
         <div className="flex items-center space-x-4">
           {/* دکمه ورود */}
@@ -43,6 +46,8 @@ const Header = () => {
               type="text"
               placeholder="Search for products..."
               className="w-full p-3 pl-10 pr-4 rounded-lg bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
               <svg

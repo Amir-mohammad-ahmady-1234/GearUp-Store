@@ -22,3 +22,4 @@ function App() {
 export default App;
 
 // i get my photos from this site => https://shopping-blush-nine.vercel.app/home
+// fakeapistore web site => https://fakestoreapi.com/
