@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 const HomePage = () => {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(
     function () {
@@ -21,8 +21,8 @@ const HomePage = () => {
   );
 
   useEffect(function () {
-    dispatch(fetching())
-  }, []);
+    if (isAuthenticated) dispatch(fetching());
+  }, [isAuthenticated]);
 
   return (
     <div>

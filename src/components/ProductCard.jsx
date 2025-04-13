@@ -2,7 +2,6 @@ const ProductCard = ({ product }) => {
   const productTitle = product.title.split(" ");
   const productDescription = product.description.split(" ");
 
-  console.log(productTitle, productDescription);
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden">
       <img

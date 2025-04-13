@@ -2,14 +2,24 @@ import { Link } from "react-router-dom";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "../contexts/AuthContext";
 import { useState } from "react";
+import { filterSearchQuery } from "../features/product/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
+
+  const reduxDispatch = useDispatch();
+  const { isLoading } = useSelector((store) => store.product);
 
   const { isAuthenticated, dispatch } = useAuth();
 
   function handleLogout() {
     if (isAuthenticated) dispatch({ type: "auth/logout" });
+  }
+
+  function handleSearchQueryFiltering(e) {
+    setSearchQuery(e.target.value);
+    reduxDispatch(filterSearchQuery(e.target.value));
   }
 
   return (
@@ -40,14 +50,18 @@ const Header = () => {
 
       {/* فیلد جستجو */}
       <div className="mt-4 flex justify-center items-top md:mt-[-30px]">
-        <form className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4">
+        <form
+          className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <div className="relative">
             <input
               type="text"
               placeholder="Search for products..."
               className="w-full p-3 pl-10 pr-4 rounded-lg bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleSearchQueryFiltering}
+              disabled={isLoading}
             />
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
               <svg

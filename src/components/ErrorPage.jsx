@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { fetching } from "../features/product/productSlice";
@@ -52,11 +51,9 @@ function ErrorPage() {
           <button onClick={handleTryAgain} className="px-6 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 transition duration-300">
             Try Again
           </button>
-          <Link to='/'>
           <button className="px-6 py-2 bg-gray-700 text-white font-semibold rounded-md hover:bg-gray-600 transition duration-300">
             Go Home
           </button>
-          </Link>
         </div>
       </div>
     </div>
