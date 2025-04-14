@@ -4,18 +4,20 @@ import LoginPage from "./pages/LoginPage";
 import { AuthProvider } from "./contexts/AuthContext";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import BasketPage from "./pages/BasketPage";
 
 function App() {
   return (
     <AuthProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
-  </AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="basket" element={<BasketPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

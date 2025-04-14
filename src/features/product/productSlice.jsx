@@ -48,6 +48,7 @@ const productSlice = createSlice({
 
 export function fetching() {
   return async function (dispatch, getState) {
+    if (getState().product.allProduct.length > 0) return;
     try {
       dispatch({ type: "product/loading" });
       const res = await fetch("https://fakestoreapi.com/products");
@@ -61,7 +62,4 @@ export function fetching() {
 }
 
 export default productSlice.reducer;
-export const {
-  filterSearchQuery,
-  filteringProducts,
-} = productSlice.actions;
+export const { filterSearchQuery, filteringProducts } = productSlice.actions;

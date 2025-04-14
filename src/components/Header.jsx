@@ -42,9 +42,11 @@ const Header = () => {
           </Link>
 
           {/* دکمه سبد خرید */}
-          <button className="bg-green-500 px-4 py-2 rounded-md hover:bg-green-700 transition">
-            My Basket
-          </button>
+          <Link to="basket">
+            <button className="bg-green-500 px-4 py-2 rounded-md hover:bg-green-700 transition">
+              My Basket
+            </button>
+          </Link>
         </div>
       </div>
 

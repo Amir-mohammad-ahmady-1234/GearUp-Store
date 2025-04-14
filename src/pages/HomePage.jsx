@@ -4,14 +4,15 @@ import ProductList from "../components/ProductList";
 import { useAuth } from "../contexts/AuthContext";
 import { fetching } from "../features/product/productSlice";
 
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { allProduct } = useSelector((store) => store.product);
 
   useEffect(
     function () {
@@ -20,9 +21,12 @@ const HomePage = () => {
     [isAuthenticated]
   );
 
-  useEffect(function () {
-    if (isAuthenticated) dispatch(fetching());
-  }, [isAuthenticated]);
+  useEffect(
+    function () {
+      if (isAuthenticated) dispatch(fetching());
+    },
+    [isAuthenticated]
+  );
 
   return (
     <div>
