@@ -1,6 +1,26 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import BasketHeader from "../components/BasketHeader";
+import { useAuth } from "../contexts/AuthContext";
+import { productDeleted } from "../features/basket/basketSlice";
 
 const BasketPage = ({ cartItems = [] }) => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(
+    function () {
+      if (!isAuthenticated) navigate("/login");
+    },
+    [isAuthenticated]
+  );
+
+  function handleDeleteProductFromBasket(item) {
+    dispatch(productDeleted(item));
+  }
+
   return (
     <>
       <BasketHeader />
@@ -37,12 +57,15 @@ const BasketPage = ({ cartItems = [] }) => {
                   </div>
 
                   {/* Quantity and Total */}
-                  <div className="flex flex-col items-center space-y-2 mt-4 md:mt-0">
-                    <p className="text-sm text-gray-600">
-                      count: {item.quantity}
-                    </p>
+                  <div className="flex flex items-center space-x-2 mt-4 md:mt-0">
+                    <button
+                      onClick={() => handleDeleteProductFromBasket(item)}
+                      className="text-sm text-red-600 scale-[2] text-bold"
+                    >
+                      &times;
+                    </button>
                     <p className="text-lg font-bold text-green-600">
-                      {item.totalPrice.toLocaleString()} $
+                      {item.price.toLocaleString()} $
                     </p>
                   </div>
                 </div>
@@ -54,7 +77,7 @@ const BasketPage = ({ cartItems = [] }) => {
                   Total Price:
                   <span className="text-green-600 mr-2">
                     {cartItems
-                      .reduce((total, item) => total + item.totalPrice, 0)
+                      .reduce((total, item) => total + item.price, 0)
                       .toLocaleString()}
                     $
                   </span>

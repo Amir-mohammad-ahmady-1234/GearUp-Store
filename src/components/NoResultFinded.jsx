@@ -22,9 +22,9 @@ const NoResultsFinded = () => {
       </div>
 
       {/* متن اصلی */}
-      <h2 className="text-xl font-semibold mb-2">نتیجه‌ای یافت نشد!</h2>
+      <h2 className="text-xl font-semibold mb-2">No results found!</h2>
       <p className="text-center text-sm mb-6 px-4">
-        متاسفانه کالایی مطابق با فیلتر شما وجود ندارد. لطفاً فیلترها را تغییر دهید یا بعداً دوباره امتحان کنید.
+      Unfortunately, there are no products that match your filters. Please change the filters or try again later.
       </p>
     </div>
   );

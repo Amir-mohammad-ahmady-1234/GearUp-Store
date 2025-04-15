@@ -5,15 +5,18 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BasketPage from "./pages/BasketPage";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { storedProducts } = useSelector((state) => state.basket);
+
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="basket" element={<BasketPage />} />
+          <Route path="basket" element={<BasketPage cartItems={storedProducts} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
