@@ -25,14 +25,14 @@ Modern e-commerce solution featuring:
 
 ## 📸 Screenshots
 ### Page View
-![Page View]()
+![Page View](./screenshots/Screenshot(86).png.)
 *Filterable product grid with category navigation*
 
 ### User Basket
 ![User Basket]()
 
-### Error Handling
-![Error Demo]()
+### Login Page
+![Login Page]()
 *Toast notifications for form validations*
 
 ## 🛠️ Tech Stack
