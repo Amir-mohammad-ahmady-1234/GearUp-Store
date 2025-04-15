@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import BasketHeader from "../components/BasketHeader";
 import { useAuth } from "../contexts/AuthContext";
-import { productDeleted } from "../features/basket/basketSlice";
+import { buyProducts, productDeleted } from "../features/basket/basketSlice";
 
 const BasketPage = ({ cartItems = [] }) => {
   const { isAuthenticated } = useAuth();
@@ -21,8 +21,16 @@ const BasketPage = ({ cartItems = [] }) => {
     dispatch(productDeleted(item));
   }
 
+  function handleBuyProducts() {
+    const isAlowed = confirm(
+      "Are you sure you want to purchase the product in your shopping cart?"
+    );
+    if (isAlowed) dispatch(buyProducts());
+  }
+
   return (
     <>
+    <div className="flex flex-col space-y-16">
       <BasketHeader />
       <div className="min-h-screen bg-gray-100 py-8">
         {/* Cart Items */}
@@ -46,7 +54,7 @@ const BasketPage = ({ cartItems = [] }) => {
                   {/* Product Details */}
                   <div className="flex-1 ml-0 md:ml-6">
                     <h2 className="text-lg font-semibold text-gray-800">
-                      {item.name}
+                      {item.title}
                     </h2>
                     <p className="text-sm text-gray-600 mt-1">
                       {item.description}
@@ -72,7 +80,7 @@ const BasketPage = ({ cartItems = [] }) => {
               ))}
 
               {/* Total Price */}
-              <div className="bg-white rounded-lg shadow-md p-6 text-center">
+              <div className="flex justify-between items-center bg-white rounded-lg shadow-md p-6 text-center">
                 <h2 className="text-xl font-bold text-gray-800 mb-4">
                   Total Price:
                   <span className="text-green-600 mr-2">
@@ -82,6 +90,12 @@ const BasketPage = ({ cartItems = [] }) => {
                     $
                   </span>
                 </h2>
+                <button
+                  className="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  onClick={handleBuyProducts}
+                >
+                  Buy products
+                </button>
               </div>
             </div>
           ) : (
@@ -94,6 +108,7 @@ const BasketPage = ({ cartItems = [] }) => {
           )}
         </div>
       </div>
+    </div>
     </>
   );
 };

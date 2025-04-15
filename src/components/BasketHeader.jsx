@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const BasketHeader = () => {
     const navigate = useNavigate()
   return (
-    <header className="bg-white shadow-md py-4">
+    <header className="fixed w-full bg-white shadow-md py-4">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Back Button */}
         <button

@@ -16,8 +16,11 @@ const basketSlice = createSlice({
         (product) => product.id !== action.payload.id
       );
     },
+    buyProducts(state) {
+      state.storedProducts = []
+    }
   },
 });
 
 export default basketSlice.reducer;
-export const { productAdded, productDeleted } = basketSlice.actions;
+export const { productAdded, productDeleted, buyProducts } = basketSlice.actions;
