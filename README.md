@@ -24,16 +24,15 @@ Modern e-commerce solution featuring:
 > *Test Register with => email: mohammad@gmail.com / Password: 12345678*
 
 ## 📸 Screenshots
-### Page View
+### Login Page
 ![Page View](./screenshots/s1.png)
-*Filterable product grid with category navigation*
 
-### User Basket
+### Page View
 ![User Basket](./screenshots/s2.png)
 
-### Login Page
+### User Basket
 ![Login Page](./screenshots/s3.png)
-*Toast notifications for form validations*
+
 
 ## 🛠️ Tech Stack
 ### Frontend
