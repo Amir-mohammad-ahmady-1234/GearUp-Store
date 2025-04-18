@@ -39,8 +39,8 @@ Modern e-commerce solution featuring:
 ### Frontend
 - React 18 with Vite
 - React Router v6
-- Redux Toolkit + RTK Query
-- Tailwind CSS + DaisyUI
+- Redux Toolkit + Redux Thunk
+- Tailwind CSS - (responsive design)
 
 
 ## ▶️ Local Setup
