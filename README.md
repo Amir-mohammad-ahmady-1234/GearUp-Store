@@ -23,7 +23,7 @@ Modern e-commerce solution featuring:
 > [https://gearup-store.vercel.app](https://gear-up-store-fusy.vercel.app/)  
 > *Test Register with => email: mohammad@gmail.com / Password: 12345678*
 
-## 📸 Screenshots
+## 📸 Screenshots ( just main page )
 ### Login Page
 ![Page View](./screenshots/s1.png)
 
